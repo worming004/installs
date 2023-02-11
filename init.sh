@@ -40,6 +40,9 @@ asdf plugin add azure-cli
 asdf plugin add helm
 asdf plugin add github-cli
 asdf plugin add terraform
+asdf plugin add gohugo
+asdf plugin add gleam
+asdf plugin add nodejs
 sudo dnf install autoconf automake
 sudo dnf install ncurses-devel
 sudo dnf install gcc-c++
@@ -50,6 +53,9 @@ asdf install azure-cli 2.45.0
 asdf install helm 3.11.1
 asdf install github-cli 2.23.0
 asdf install terraform 1.3.8
+asdf install gohugo 0.110.0
+asdf install gleam 0.26.2
+asdf install nodejs 19.6.0
 KERL_BUILD_DOCS=yes asdf install erlang 25.1.2
 asdf global elixir 1.14.3-otp-25
 asdf global python 3.11.2
@@ -61,6 +67,9 @@ asdf global github-cli 2.23.0
 asdf global terraform 1.3.8
 asdf global erlang 25.1.2
 asdf global elixir 1.14.3-otp-25
+asdf global gohugo 0.110.0
+asdf global gleam 0.26.2
+asdf global nodejs 19.6.0
 
 # zsh 
 sudo dnf install util-linux
@@ -71,6 +80,7 @@ chsh -s $(`which zsh`) $USER
 # git
 git config --global user.email "worming@hotmail.be"
 git config --global user.name "worming"
+go install github.com/jesseduffield/lazygit@latest
 
 # zsh config
 tee -a ~/.zshrc << EOF
