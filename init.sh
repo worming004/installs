@@ -6,6 +6,8 @@ mkdir -p ~/.config
 cd ~/.config
 git clone git@github.com:worming004/nvim-ide.git
 mv nvim-ide/ nvim
+sudo dnf install -y ripgrep
+sudo dnf install -y fd-find
 
 # tmux
 cd ~/.config/
