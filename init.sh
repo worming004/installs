@@ -82,6 +82,9 @@ git config --global user.email "worming@hotmail.be"
 git config --global user.name "worming"
 go install github.com/jesseduffield/lazygit@latest
 
+# i3
+dnf install i3
+
 # zsh config
 tee -a ~/.zshrc << EOF
 # nvim
