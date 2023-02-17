@@ -117,4 +117,7 @@ source <(kubectl completion zsh)
 # minikube
 alias min='minikube'
 source <(minikube completion zsh)
+
+# tmux
+alias tm='tmux'
 EOF
