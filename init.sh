@@ -63,7 +63,7 @@ asdf install gohugo 0.110.0
 asdf install gleam 0.26.2
 asdf install nodejs 19.6.0
 KERL_BUILD_DOCS=yes asdf install erlang 25.1.2
-asdf global elixir 1.14.3-otp-25
+asdf install elixir 1.14.3-otp-25
 asdf global python 3.11.2
 asdf global kubectl 1.26.1 
 asdf global caddy 2.6.3
