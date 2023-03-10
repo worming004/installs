@@ -49,6 +49,7 @@ asdf plugin add terraform
 asdf plugin add gohugo
 asdf plugin add gleam
 asdf plugin add nodejs
+asdf plugin add argo
 sudo dnf install autoconf automake
 sudo dnf install ncurses-devel
 sudo dnf install gcc-c++
@@ -62,6 +63,7 @@ asdf install terraform 1.3.8
 asdf install gohugo 0.110.0
 asdf install gleam 0.26.2
 asdf install nodejs 19.6.0
+asdf install argo 3.4.5
 KERL_BUILD_DOCS=yes asdf install erlang 25.1.2
 asdf install elixir 1.14.3-otp-25
 asdf global python 3.11.2
@@ -76,6 +78,7 @@ asdf global elixir 1.14.3-otp-25
 asdf global gohugo 0.110.0
 asdf global gleam 0.26.2
 asdf global nodejs 19.6.0
+asdf global argo 3.4.5
 
 # zsh 
 sudo dnf install util-linux
@@ -97,7 +100,7 @@ tee -a ~/.zshrc << EOF
 alias nv='nvim'
 
 # git
-alias gpa='git pull all'
+alias gpa='git pull --all'
 alias gP='git push'
 alias ga='git add .'
 
