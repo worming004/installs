@@ -125,6 +125,9 @@ source <(kubectl completion zsh)
 alias min='minikube'
 source <(minikube completion zsh)
 
+#argo
+source <(argo completion zsh)
+
 # tmux
 alias tm='tmux'
 EOF
