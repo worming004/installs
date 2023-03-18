@@ -133,4 +133,13 @@ source <(argo completion zsh)
 
 # tmux
 alias tm='tmux'
+
+# bash compatibilty
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
+# pack
+export DOCKER_HOST="unix://$(podman info -f "{{.Host.RemoteSocket.Path}}")"
+. $(pack completion --shell zsh)
+
 EOF
