@@ -143,3 +143,10 @@ export DOCKER_HOST="unix://$(podman info -f "{{.Host.RemoteSocket.Path}}")"
 . $(pack completion --shell zsh)
 
 EOF
+
+# postgresql
+sudo dnf install openssl-devel readline-devel zlib-devel libcurl-devel uuid-devel libuuid-devel -y
+asdf plugin add postgres
+adsf install postgres 15.2
+asdf global postgres 15.2
+
