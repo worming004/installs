@@ -133,15 +133,13 @@ source <(argo completion zsh)
 
 # tmux
 alias tm='tmux'
-
+ 
 # bash compatibilty
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
-# pack
-export DOCKER_HOST="unix://$(podman info -f "{{.Host.RemoteSocket.Path}}")"
-. $(pack completion --shell zsh)
-
+#podman
+alias pm='podman'
 EOF
 
 # postgresql
@@ -149,4 +147,5 @@ sudo dnf install openssl-devel readline-devel zlib-devel libcurl-devel uuid-deve
 asdf plugin add postgres
 adsf install postgres 15.2
 asdf global postgres 15.2
+
 
