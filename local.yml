@@ -1,6 +1,21 @@
 - hosts: localhost
   become: true
   tasks:
+    - name: General dependencies
+      become: true
+      package:
+        name:
+          - openssl-devel
+          - readline-devel
+          - zlib-devel
+          - libcurl-devel
+          - uuid-devel
+          - libuuid-devel
+          - autoconf
+          - automake
+          - ncurses-devel
+          - gcc-c++
+        state: present
     - name: Neovim installation
       become: true
       ansible.builtin.package:
@@ -63,36 +78,59 @@
         name:
           - dotnet-sdk-7.0
         state: present
-  roles:
-    - role: cimon-io.asdf
-      become: true
-      asdf_user: worming
-      asdf_plugins:
-      - name: golang
-        versions:
-          - 1.20.4
-        global: 1.20.4
-      # - name: erlang 
-      #   versions:
-      #     - 25.1.2 
-      #   global: 25.1.2 
-      # - name: elixir 
-      #   versions:
-      #     - 1.14.3-otp-25
-      #   global: 1.14.3-otp-25
-      # - name: python 
-      #   versions:
-      #     - 3.11.2
-      #   global: 3.11.2 
-      # - name: kubectl 
-      #   versions:
-      #     - 1.26.1
-      #   global: 1.26.1 
-      # - name: github-cli
-      #   versions:
-      #     - 2.23.0
-      #   global: 2.23.0
-      # - name: powershell-core
-      #   versions:
-      #     - 7.3.4
-      #   global: 7.3.4
+
+    - name: Asdf installation
+      become: false
+      git:
+        repo: https://github.com/asdf-vm/asdf.git
+        dest: ~/.asdf
+        version: v0.11.3
+    - name: Asdf configuration
+      become: false
+      lineinfile:
+        dest: ~/.zshrc
+        line: '{{ item }}'
+      with_items:
+        - '. "$HOME/.asdf/asdf.sh"'
+        - '. "$HOME/.asdf/completions/asdf.bash"'
+
+    - name: Aliases
+      become: false
+      lineinfile:
+        dest: ~/.zshrc
+        line: '{{ item }}'
+      with_items:
+        - "alias nv='nvim'"
+        - "alias gpa='git pull --all'"
+        - "alias gp='git push'"
+        - "alias ga='git add .'"
+        - "alias lz='lazygit'"
+        - "alias k='kubectl'"
+        - "alias min='minikube'"
+        - "alias tm='tmux'"
+        - "alias pm='podman'"
+        - "alias kit-cat='kitten +kitten icat'"
+
+    - name: Other Utilities
+      become: false
+      lineinfile:
+        dest: ~/.zshrc
+        line: '{{ item }}'
+      with_items:
+        - "source <(kubectl completion zsh)"
+        - "source <(minikube completion zsh)"
+    
+    - name: Zsh config
+      become: false
+      lineinfile:
+        dest: ~/.zshrc
+        line: '{{ item }}'
+      with_items:
+        - 'export ZSH="$HOME/.oh-my-zsh"'
+        - 'ZSH_THEME="essembeh"'
+        - "plugins=(git)"
+        - "source $ZSH/oh-my-zsh.sh"
+        - "SHELL=$(which zsh)"
+        - "autoload -U +X compinit && compinit"
+        - "autoload -U +X bashcompinit && bashcompinit"
+
