@@ -1,0 +1,98 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Neovim installation
+      become: true
+      ansible.builtin.package:
+        name:
+          - neovim
+          - python3-neovim
+          - ripgrep
+          - fd-find
+        state: present
+    - name: Neovim configuration
+      become: false
+      ansible.builtin.git:
+        repo: git@github.com:worming004/nvim-ide.git
+        dest: ~/.config/nvim
+
+    - name: Tmux installation
+      become: true
+      ansible.builtin.package:
+        name:
+          - tmux
+        state: present
+    - name: Tmux configuration
+      become: false
+      ansible.builtin.git:
+        repo: git@github.com:worming004/tmux-conf.git
+        dest: ~/.config/tmux
+
+    - name: I3 installation
+      become: true
+      package:
+        name:
+          - i3
+          - i3status
+          - dmenu
+          - i3lock
+          - xbacklight
+          - feh
+          - conky
+    - name: I3 configuration
+      become: false
+      git:
+        repo: git@github.com:worming004/i3-config.git
+        dest: ~/.config/i3
+
+    - name: Kitty installation
+      become: true
+      package:
+        name: 
+          - kitty
+        state: present
+    - name: Kitty configuration
+      become: false
+      lineinfile:
+        path: ~/.profile 
+        line: "export TERMINAL=/usr/bin/kitty"
+
+    - name: Dotnet installation
+      become: true
+      package:
+        name:
+          - dotnet-sdk-7.0
+        state: present
+  roles:
+    - role: cimon-io.asdf
+      become: true
+      asdf_user: worming
+      asdf_plugins:
+      - name: golang
+        versions:
+          - 1.20.4
+        global: 1.20.4
+      # - name: erlang 
+      #   versions:
+      #     - 25.1.2 
+      #   global: 25.1.2 
+      # - name: elixir 
+      #   versions:
+      #     - 1.14.3-otp-25
+      #   global: 1.14.3-otp-25
+      # - name: python 
+      #   versions:
+      #     - 3.11.2
+      #   global: 3.11.2 
+      # - name: kubectl 
+      #   versions:
+      #     - 1.26.1
+      #   global: 1.26.1 
+      # - name: github-cli
+      #   versions:
+      #     - 2.23.0
+      #   global: 2.23.0
+      # - name: powershell-core
+      #   versions:
+      #     - 7.3.4
+      #   global: 7.3.4
