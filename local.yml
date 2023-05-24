@@ -134,16 +134,10 @@
         - "autoload -U +X compinit && compinit"
         - "autoload -U +X bashcompinit && bashcompinit"
 
-    - block:
-      - name: Add vagrant repository
-        become: true
-        yum_repository:
-          name: vagrant
-          description: add vagrant repo
-          baseurl: https://rpm.releases.hashicorp.com/fedora/hashicorp.rep
-      - name: Vagrant installation (fedora)
-        become: true
-        package:
-          name: vagrant
-          state: present
-      when: ansible_facts['os_family'] == "RedHat"
+    - name: Picom installation
+      become: true
+      package:
+        name:
+          - picom
+        state: present
+      
