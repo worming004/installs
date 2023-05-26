@@ -16,6 +16,14 @@
           - ncurses-devel
           - gcc-c++
         state: present
+
+    - name: Nice tools
+      become: true
+      package:
+        name:
+          - neofetch
+        state: present
+
     - name: Neovim installation
       become: true
       package:
