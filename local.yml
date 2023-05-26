@@ -149,3 +149,10 @@
           - picom
         state: present
       
+    - name: postgres
+      become: true
+      package:
+        name:
+          - postgresql
+          - postgresql-contrib
+        state: present
