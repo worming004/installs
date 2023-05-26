@@ -141,7 +141,8 @@
         - "SHELL=$(which zsh)"
         - "autoload -U +X compinit && compinit"
         - "autoload -U +X bashcompinit && bashcompinit"
-        - "export HISTSIZE=1000000000\nexport SAVEHIST=$HISTSIZE"
+        - "export HISTSIZE=1000000000"
+        - "export SAVEHIST=$HISTSIZE"
         - "setopt EXTENDED_HISTORY"
 
     - name: Picom installation
