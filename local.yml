@@ -22,6 +22,7 @@
       package:
         name:
           - neofetch
+          - picom
         state: present
 
     - name: Neovim installation
@@ -146,13 +147,6 @@
         - "setopt EXTENDED_HISTORY"
         - "[ -z \"$TMUX\" ] && neofetch"
 
-    - name: Picom installation
-      become: true
-      package:
-        name:
-          - picom
-        state: present
-      
     - name: postgres
       become: true
       package:
