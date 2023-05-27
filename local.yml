@@ -110,25 +110,14 @@
         line: '{{ item }}'
       with_items:
         - "alias nv='nvim'"
-        - "alias gpa='git pull --all'"
-        - "alias gp='git push'"
-        - "alias ga='git add .'"
         - "alias lz='lazygit'"
         - "alias k='kubectl'"
         - "alias min='minikube'"
         - "alias tm='tmux'"
         - "alias pm='podman'"
         - "alias kit-cat='kitten +kitten icat'"
+        - "alias editzshrc='nvim ~/.zshrc'"
 
-    - name: Other Utilities
-      become: false
-      lineinfile:
-        dest: ~/.zshrc
-        line: '{{ item }}'
-      with_items:
-        - "source <(kubectl completion zsh)"
-        - "source <(minikube completion zsh)"
-    
     - name: Zsh config
       become: false
       lineinfile:
@@ -137,7 +126,7 @@
       with_items:
         - 'export ZSH="$HOME/.oh-my-zsh"'
         - 'ZSH_THEME="essembeh"'
-        - "plugins=(git)"
+        - "plugins=(alias-finder ansible asdf dnf dotnet emoji git gitignore helm kubectl thefuck minikube wd)"
         - "source $ZSH/oh-my-zsh.sh"
         - "SHELL=$(which zsh)"
         - "autoload -U +X compinit && compinit"
@@ -146,6 +135,17 @@
         - "export SAVEHIST=$HISTSIZE"
         - "setopt EXTENDED_HISTORY"
         - "[ -z \"$TMUX\" ] && neofetch"
+        - line: "plugins=(git)"
+          state: absent
+
+    - name: Obsolete Zsh config
+      become: false
+      lineinfile:
+        dest: ~/.zshrc
+        line: '{{ item }}'
+        state: absent
+      with_items:
+        - "plugins=(git)"
 
     - name: postgres
       become: true
