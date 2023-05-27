@@ -117,6 +117,8 @@
         - "alias pm='podman'"
         - "alias kit-cat='kitten +kitten icat'"
         - "alias editzshrc='nvim ~/.zshrc'"
+        - "alias editnvim='nvim ~/.config/nvim'"
+        - "alias alg='alias list | grep'"
 
     - name: Zsh config
       become: false
@@ -135,8 +137,7 @@
         - "export SAVEHIST=$HISTSIZE"
         - "setopt EXTENDED_HISTORY"
         - "[ -z \"$TMUX\" ] && neofetch"
-        - line: "plugins=(git)"
-          state: absent
+        - "PATH=$PATH:~/.asdf/installs/golang/1.20/packages/bin/"
 
     - name: Obsolete Zsh config
       become: false
