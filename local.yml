@@ -15,6 +15,7 @@
           - automake
           - ncurses-devel
           - gcc-c++
+          - libyaml-devel
         state: present
 
     - name: Nice tools
@@ -23,6 +24,7 @@
         name:
           - neofetch
           - picom
+          - pinta
         state: present
 
     - name: Neovim installation
