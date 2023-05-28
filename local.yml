@@ -119,6 +119,7 @@
         - "alias editzshrc='nvim ~/.zshrc'"
         - "alias editnvim='nvim ~/.config/nvim'"
         - "alias alg='alias list | grep'"
+        - "alias gomi='go mod init'"
 
     - name: Zsh config
       become: false
