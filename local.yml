@@ -137,7 +137,6 @@
         - "export HISTSIZE=1000000000"
         - "export SAVEHIST=$HISTSIZE"
         - "setopt EXTENDED_HISTORY"
-        - "[ -z \"$TMUX\" ] && neofetch"
         - "PATH=$PATH:~/.asdf/installs/golang/1.20/packages/bin/"
 
     - name: Obsolete Zsh config
