@@ -25,6 +25,7 @@
           - neofetch
           - picom
           - pinta
+          - ranger
         state: present
 
     - name: Neovim installation
