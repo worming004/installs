@@ -2,7 +2,8 @@
   become: true
   tasks:
     - name: General dependencies
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      ignore_errors: true
       package:
         name:
           - openssl-devel
@@ -19,7 +20,8 @@
         state: present
 
     - name: Nice tools
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      ignore_errors: true
       package:
         name:
           - neofetch
@@ -29,7 +31,8 @@
         state: present
 
     - name: Neovim installation
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      ignore_errors: true
       package:
         name:
           - neovim
@@ -45,7 +48,8 @@
         dest: ~/.config/nvim
 
     - name: Tmux installation
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      ignore_errors: true
       package:
         name:
           - tmux
@@ -58,7 +62,8 @@
         dest: ~/.config/tmux
 
     - name: Dotnet installation
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      ignore_errors: true
       package:
         name:
           - dotnet-sdk-7.0
@@ -97,7 +102,8 @@
         line: 'source ~/.zshrc.common'
 
     - name: postgres
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      ignore_errors: true
       package:
         name:
           - postgresql
