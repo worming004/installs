@@ -101,6 +101,18 @@
         dest: ~/.asdf
         version: v0.11.3
 
+    - name: Zsh auto suggestion
+      become: false
+      git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+    - name: Zsh syntax-highlighting
+      become: false
+      git:
+        repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
     - name: Zsh common config file
       become: false
       copy:
