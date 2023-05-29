@@ -56,37 +56,6 @@
         repo: git@github.com:worming004/tmux-conf.git
         dest: ~/.config/tmux
 
-    - name: I3 installation
-      become: true
-      package:
-        name:
-          - i3
-          - i3status
-          - dmenu
-          - i3lock
-          - xbacklight
-          - feh
-          - conky
-
-    - name: I3 configuration
-      become: false
-      git:
-        repo: git@github.com:worming004/i3-config.git
-        dest: ~/.config/i3
-
-    - name: Kitty installation
-      become: true
-      package:
-        name: 
-          - kitty
-        state: present
-
-    - name: Kitty configuration
-      become: false
-      lineinfile:
-        path: ~/.profile 
-        line: "export TERMINAL=/usr/bin/kitty"
-
     - name: Dotnet installation
       become: true
       package:
