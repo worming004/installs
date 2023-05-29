@@ -36,6 +36,7 @@
           - ripgrep
           - fd-find
         state: present
+
     - name: Neovim configuration
       become: false
       git:
@@ -48,6 +49,7 @@
         name:
           - tmux
         state: present
+
     - name: Tmux configuration
       become: false
       git:
@@ -65,6 +67,7 @@
           - xbacklight
           - feh
           - conky
+
     - name: I3 configuration
       become: false
       git:
@@ -77,6 +80,7 @@
         name: 
           - kitty
         state: present
+
     - name: Kitty configuration
       become: false
       lineinfile:
@@ -97,50 +101,18 @@
         dest: ~/.asdf
         version: v0.11.3
 
-    - name: Aliases
+    - name: Zsh common config file
       become: false
-      lineinfile:
-        dest: ~/.zshrc
-        line: '{{ item }}'
-      with_items:
-        - "alias nv='nvim'"
-        - "alias lz='lazygit'"
-        - "alias k='kubectl'"
-        - "alias min='minikube'"
-        - "alias tm='tmux'"
-        - "alias pm='podman'"
-        - "alias kit-cat='kitten +kitten icat'"
-        - "alias editzshrc='nvim ~/.zshrc'"
-        - "alias editnvim='nvim ~/.config/nvim'"
-        - "alias alg='alias | grep'"
-        - "alias gomi='go mod init'"
+      copy:
+        src: ./.zshrc.common
+        dest: ~/.zshrc.common
+        mode: '0644'
 
-    - name: Zsh config
+    - name: Source common zsh config
       become: false
       lineinfile:
         dest: ~/.zshrc
-        line: '{{ item }}'
-      with_items:
-        - 'export ZSH="$HOME/.oh-my-zsh"'
-        - 'ZSH_THEME="essembeh"'
-        - "plugins=(alias-finder ansible asdf dnf dotnet emoji git gitignore helm kubectl thefuck minikube wd)"
-        - "source $ZSH/oh-my-zsh.sh"
-        - "SHELL=$(which zsh)"
-        - "autoload -U +X compinit && compinit"
-        - "autoload -U +X bashcompinit && bashcompinit"
-        - "export HISTSIZE=1000000000"
-        - "export SAVEHIST=$HISTSIZE"
-        - "setopt EXTENDED_HISTORY"
-        - "PATH=$PATH:~/.asdf/installs/golang/1.20/packages/bin/"
-
-    - name: Obsolete Zsh config
-      become: false
-      lineinfile:
-        dest: ~/.zshrc
-        line: '{{ item }}'
-        state: absent
-      with_items:
-        - "plugins=(git)"
+        line: 'source ~/.zshrc.common'
 
     - name: postgres
       become: true
@@ -150,11 +122,3 @@
           - postgresql-contrib
         state: present
 
-    - name: Asdf configuration
-      become: false
-      lineinfile:
-        dest: ~/.zshrc
-        line: '{{ item }}'
-      with_items:
-        - '. "$HOME/.asdf/asdf.sh"'
-        - '. "$HOME/.asdf/completions/asdf.bash"'
