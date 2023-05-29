@@ -96,14 +96,6 @@
         repo: https://github.com/asdf-vm/asdf.git
         dest: ~/.asdf
         version: v0.11.3
-    - name: Asdf configuration
-      become: false
-      lineinfile:
-        dest: ~/.zshrc
-        line: '{{ item }}'
-      with_items:
-        - '. "$HOME/.asdf/asdf.sh"'
-        - '. "$HOME/.asdf/completions/asdf.bash"'
 
     - name: Aliases
       become: false
@@ -120,7 +112,7 @@
         - "alias kit-cat='kitten +kitten icat'"
         - "alias editzshrc='nvim ~/.zshrc'"
         - "alias editnvim='nvim ~/.config/nvim'"
-        - "alias alg='alias list | grep'"
+        - "alias alg='alias | grep'"
         - "alias gomi='go mod init'"
 
     - name: Zsh config
@@ -157,3 +149,12 @@
           - postgresql
           - postgresql-contrib
         state: present
+
+    - name: Asdf configuration
+      become: false
+      lineinfile:
+        dest: ~/.zshrc
+        line: '{{ item }}'
+      with_items:
+        - '. "$HOME/.asdf/asdf.sh"'
+        - '. "$HOME/.asdf/completions/asdf.bash"'
