@@ -130,3 +130,5 @@ alias dre='dotnet restore'
 alias dru='dotnet run'
 alias dbu='dotnet build'
 alias dbunr='dotnet build --no-restore'
+
+alias tmns='tmux new-session -d -s'
