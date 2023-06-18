@@ -99,7 +99,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # golang
-PATH=$PATH:~/.asdf/installs/golang/1.20/packages/bin/
+PATH=$PATH:$(go env GOPATH)/bin/
+PATH=$PATH:$HOME/.local/bin/
+PATH=$PATH:$HOME/bin/
 
 # tmux
 SHELL=$(which zsh)
