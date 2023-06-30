@@ -136,3 +136,6 @@ alias dbunr='dotnet build --no-restore'
 alias tmns='tmux new-session -d -s'
 
 alias grget='git remote get-url origin'
+
+# Ensure glob expression works like bash
+setopt extended_glob
