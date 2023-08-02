@@ -137,3 +137,5 @@ alias dbunr='dotnet build --no-restore'
 alias tmns='tmux new-session -d -s'
 
 alias grget='git remote get-url origin'
+
+alias cob='cobra-cli'
