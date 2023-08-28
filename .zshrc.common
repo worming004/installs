@@ -128,11 +128,13 @@ alias editzshrc='nvim ~/.zshrc'
 alias alg='alias | grep'
 alias tma='tmux attach'
 
-alias dte='dotnet test'
 alias dre='dotnet restore'
 alias dru='dotnet run'
 alias dbu='dotnet build'
+alias dte='dotnet test'
+alias drunr='dotnet run --no-restore'
 alias dbunr='dotnet build --no-restore'
+alias dtenr='dotnet test --no-restore'
 
 alias tmns='tmux new-session -d -s'
 
