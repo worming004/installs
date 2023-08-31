@@ -29,6 +29,7 @@
           - picom
           - pinta
           - ranger
+          - zsh
         state: present
 
     - name: Neovim installation
