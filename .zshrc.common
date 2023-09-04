@@ -102,7 +102,6 @@ source $ZSH/oh-my-zsh.sh
 PATH=$PATH:$(go env GOPATH)/bin/
 PATH=$PATH:$HOME/.local/bin/
 PATH=$PATH:$HOME/bin/
-PATH=$PATH:$HOME/.cargo/bin/
 
 # tmux
 SHELL=$(which zsh)
@@ -128,16 +127,15 @@ alias editzshrc='nvim ~/.zshrc'
 alias alg='alias | grep'
 alias tma='tmux attach'
 
+alias dte='dotnet test'
 alias dre='dotnet restore'
 alias dru='dotnet run'
 alias dbu='dotnet build'
-alias dte='dotnet test'
-alias drunr='dotnet run --no-restore'
 alias dbunr='dotnet build --no-restore'
-alias dtenr='dotnet test --no-restore'
 
 alias tmns='tmux new-session -d -s'
 
 alias grget='git remote get-url origin'
 
-alias cob='cobra-cli'
+# Ensure glob expression works like bash
+setopt extended_glob
