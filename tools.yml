@@ -19,6 +19,7 @@
           - gcc-c++
           - libyaml-devel
           - zig
+          - dotnet-sdk-6
         state: present
 
     - name: General dependencies Ubuntu
@@ -47,6 +48,7 @@
           - ranger
           - zsh
           - bat
+          - podman
         state: present
 
     - name: Neovim installation
