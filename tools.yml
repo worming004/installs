@@ -1,7 +1,8 @@
 - hosts: localhost
   become: true
   tasks:
-    - name: General dependencies
+    - name: General dependencies Mac
+      when: ansible_distribution == 'MacOSX'
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ignore_errors: true
       package:
@@ -17,6 +18,22 @@
           - ncurses-devel
           - gcc-c++
           - libyaml-devel
+          - zig
+        state: present
+
+
+    - name: General dependencies Ubuntu
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+      become: true
+      ignore_errors: true
+      package:
+        name:
+          - autoconf
+          - automake
+          - build-essential
+          - libssl-dev
+          - libncurses5-dev
+          - unzip
         state: present
 
     - name: Nice tools
