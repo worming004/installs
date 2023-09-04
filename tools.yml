@@ -21,7 +21,6 @@
           - zig
         state: present
 
-
     - name: General dependencies Ubuntu
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
       become: true
@@ -47,6 +46,7 @@
           - pinta
           - ranger
           - zsh
+          - bat
         state: present
 
     - name: Neovim installation
@@ -60,11 +60,6 @@
           - fd-find
         state: present
 
-    - name: Neovim configuration
-      become: false
-      git:
-        repo: git@github.com:worming004/nvim-ide.git
-        dest: ~/.config/nvim
 
     - name: Tmux installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
@@ -73,12 +68,6 @@
         name:
           - tmux
         state: present
-
-    - name: Tmux configuration
-      become: false
-      git:
-        repo: git@github.com:worming004/tmux-conf.git
-        dest: ~/.config/tmux
 
     - name: Dotnet installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
@@ -119,6 +108,18 @@
       lineinfile:
         dest: ~/.zshrc
         line: 'source ~/.zshrc.common'
+
+    - name: Neovim configuration
+      become: false
+      git:
+        repo: git@github.com:worming004/nvim-ide.git
+        dest: ~/.config/nvim
+
+    - name: Tmux configuration
+      become: false
+      git:
+        repo: git@github.com:worming004/tmux-conf.git
+        dest: ~/.config/tmux
 
     - name: postgres
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
