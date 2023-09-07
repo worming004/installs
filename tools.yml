@@ -34,7 +34,7 @@
           - libssl-dev
           - libncurses5-dev
           - unzip
-          - pip3
+          - python3-pip
         state: present
 
     - name: Nice tools
@@ -78,6 +78,7 @@
       package:
         name:
           - dotnet-sdk-7.0
+          - dotnet-sdk-6.0
         state: present
 
     - name: Asdf installation
