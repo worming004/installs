@@ -35,6 +35,7 @@
           - libncurses5-dev
           - unzip
           - python3-pip
+          - inotify-tools
         state: present
 
     - name: Nice tools
