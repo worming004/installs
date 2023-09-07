@@ -34,7 +34,6 @@
           - libssl-dev
           - libncurses5-dev
           - unzip
-          - dotnet-sdk-6
           - pip3
         state: present
 
