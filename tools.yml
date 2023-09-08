@@ -1,11 +1,12 @@
 - hosts: localhost
   become: true
+  name: Tools
   tasks:
-    - name: General dependencies Mac
-      when: ansible_distribution == 'MacOSX'
+    - name: General dependencies Fedora (legacy)
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ignore_errors: true
-      package:
+      when: ansible_distribution == "Fedora" 
+      ansible.builtin.package:
         name:
           - openssl-devel
           - readline-devel
@@ -20,6 +21,8 @@
           - libyaml-devel
           - zig
           - picom
+          - postgresql
+          - postgresql-contrib
         state: present
 
     - name: General dependencies Ubuntu
@@ -36,12 +39,28 @@
           - unzip
           - python3-pip
           - inotify-tools
+          - postgresql
+          - postgresql-contrib
+        state: present
+
+    - name: General dependencies Manjaro
+      when: ansible_distribution == "Archlinux"
+      ansible.builtin.package:
+        name:
+          - autoconf
+          - automake
+          - unzip
+          - inotify-tools
+          - zig
+          - picom
+          - ripgrep
+          - postgresql
         state: present
 
     - name: Nice tools
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ignore_errors: true
-      package:
+      ansible.builtin.package:
         name:
           - neofetch
           - thefuck
@@ -50,24 +69,24 @@
           - zsh
           - bat
           - podman
+          - most
         state: present
 
     - name: Neovim installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ignore_errors: true
-      package:
+      when: ansible_distribution != "Archlinux"
+      ansible.builtin.package:
         name:
           - neovim
-          - python3-neovim
           - ripgrep
           - fd-find
         state: present
 
-
     - name: Tmux installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ignore_errors: true
-      package:
+      ansible.builtin.package:
         name:
           - tmux
         state: present
@@ -75,7 +94,7 @@
     - name: Dotnet installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ignore_errors: true
-      package:
+      ansible.builtin.package:
         name:
           - dotnet-sdk-7.0
           - dotnet-sdk-6.0
@@ -99,6 +118,12 @@
       git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+    - name: Zsh terraform
+      become: false
+      git:
+        repo: https://github.com/macunha1/zsh-terraform
+        dest: ~/.oh-my-zsh/custom}/plugins/terraform
 
     - name: Zsh common config file
       become: false
@@ -125,12 +150,8 @@
         repo: git@github.com:worming004/tmux-conf.git
         dest: ~/.config/tmux
 
-    - name: postgres
-      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      ignore_errors: true
-      package:
-        name:
-          - postgresql
-          - postgresql-contrib
-        state: present
-
+    - name: Neovim configuration
+      become: false
+      git:
+        repo: git@github.com:worming004/nvim-ide.git
+        dest: ~/.config/nvim
