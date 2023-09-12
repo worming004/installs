@@ -25,6 +25,19 @@
           - postgresql-contrib
         state: present
 
+    # - name: Ubuntu add redis repository
+    #   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    #   block:
+    #     - name: Add redis gpg
+    #       ansible.builtin.get_url:
+    #         url: https://packages.redis.io/gpg
+    #         dest: /usr/share/keyrings/redis-archive-keyring.gpg
+    #
+    #     - name: Add redis source
+    #       ansible.builtin.apt_repository:
+    #         repo: "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb jammy stable"
+    #         state: present
+
     - name: General dependencies Ubuntu
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
       become: true
