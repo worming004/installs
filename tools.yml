@@ -4,8 +4,7 @@
   tasks:
     - name: General dependencies Fedora (legacy)
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      ignore_errors: true
-      when: ansible_distribution == "Fedora" 
+      when: ansible_distribution == "Fedora"
       ansible.builtin.package:
         name:
           - openssl-devel
@@ -41,8 +40,7 @@
     - name: General dependencies Ubuntu
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
       become: true
-      ignore_errors: true
-      package:
+      ansible.builtin.package:
         name:
           - autoconf
           - automake
@@ -54,6 +52,9 @@
           - inotify-tools
           - postgresql
           - postgresql-contrib
+          - gpg
+          - curl
+          - redis-server
         state: present
 
     - name: General dependencies Manjaro
@@ -72,7 +73,6 @@
 
     - name: Nice tools
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      ignore_errors: true
       ansible.builtin.package:
         name:
           - neofetch
@@ -87,7 +87,6 @@
 
     - name: Neovim installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      ignore_errors: true
       when: ansible_distribution != "Archlinux"
       ansible.builtin.package:
         name:
@@ -98,7 +97,6 @@
 
     - name: Tmux installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      ignore_errors: true
       ansible.builtin.package:
         name:
           - tmux
@@ -106,7 +104,6 @@
 
     - name: Dotnet installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      ignore_errors: true
       ansible.builtin.package:
         name:
           - dotnet-sdk-7.0
@@ -115,56 +112,56 @@
 
     - name: Asdf installation
       become: false
-      git:
+      ansible.builtin.git:
         repo: https://github.com/asdf-vm/asdf.git
         dest: ~/.asdf
         version: v0.11.3
 
     - name: Zsh auto suggestion
       become: false
-      git:
+      ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-autosuggestions.git
         dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
     - name: Zsh syntax-highlighting
       become: false
-      git:
+      ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
     - name: Zsh terraform
       become: false
-      git:
+      ansible.builtin.git:
         repo: https://github.com/macunha1/zsh-terraform
         dest: ~/.oh-my-zsh/custom}/plugins/terraform
 
     - name: Zsh common config file
       become: false
-      copy:
+      ansible.builtin.copy:
         src: ./.zshrc.common
         dest: ~/.zshrc.common
         mode: '0644'
 
     - name: Source common zsh config
       become: false
-      lineinfile:
+      ansible.builtin.lineinfile:
         dest: ~/.zshrc
         line: 'source ~/.zshrc.common'
 
     - name: Neovim configuration
       become: false
-      git:
+      ansible.builtin.git:
         repo: git@github.com:worming004/nvim-ide.git
         dest: ~/.config/nvim
 
     - name: Tmux configuration
       become: false
-      git:
+      ansible.builtin.git:
         repo: git@github.com:worming004/tmux-conf.git
         dest: ~/.config/tmux
 
     - name: Neovim configuration
       become: false
-      git:
+      ansible.builtin.git:
         repo: git@github.com:worming004/nvim-ide.git
         dest: ~/.config/nvim
