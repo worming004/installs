@@ -141,6 +141,12 @@ alias cob='cobra-cli'
 alias tf='terraform'
 alias ist='istioctl'
 
+if [ $commands[skaffold] ]; then
+  source <(skaffold completion zsh)
+  compdef _skaffold skaffold
+
+fi
+
 # Ensure glob expression works like bash
 setopt extended_glob
 
