@@ -139,7 +139,9 @@ alias tmns='tmux new-session -d -s'
 alias grget='git remote get-url origin'
 alias cob='cobra-cli'
 alias tf='terraform'
+alias ist='istioctl'
 
 # Ensure glob expression works like bash
 setopt extended_glob
+
 
