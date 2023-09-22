@@ -84,7 +84,7 @@
           - podman
           - most
         state: present
-
+    
     - name: Neovim installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       when: ansible_distribution != "Archlinux"
@@ -92,7 +92,7 @@
         name:
           - neovim
           - ripgrep
-          - fd-find
+          - fd-find # TODO: move fd-find out for macos
         state: present
 
     - name: Tmux installation
@@ -102,6 +102,7 @@
           - tmux
         state: present
 
+        # TODO: install dotnet for macos
     - name: Dotnet installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:
