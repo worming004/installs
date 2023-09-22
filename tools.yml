@@ -66,6 +66,7 @@
           - unzip
           - inotify-tools
           - zig
+          - pinta
           - picom
           - ripgrep
           - postgresql
@@ -77,7 +78,6 @@
         name:
           - neofetch
           - thefuck
-          - pinta
           - ranger
           - zsh
           - bat
