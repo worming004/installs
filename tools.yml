@@ -161,8 +161,3 @@
         repo: git@github.com:worming004/tmux-conf.git
         dest: ~/.config/tmux
 
-    - name: Neovim configuration
-      become: false
-      ansible.builtin.git:
-        repo: git@github.com:worming004/nvim-ide.git
-        dest: ~/.config/nvim
