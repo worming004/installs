@@ -150,5 +150,5 @@ fi
 setopt extended_glob
 
 if [ $commands[podman] ]; then
-  source <(podman completion bash)
+  source <(podman completion zsh)
 fi
