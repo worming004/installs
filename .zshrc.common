@@ -152,3 +152,7 @@ setopt extended_glob
 if [ $commands[podman] ]; then
   source <(podman completion zsh)
 fi
+
+if [ $commands[neovide] ]; then
+  alias neovide='neovide --multigrid'
+fi
