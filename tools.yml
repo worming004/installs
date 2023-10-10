@@ -155,9 +155,14 @@
         repo: git@github.com:worming004/nvim-ide.git
         dest: ~/.config/nvim
 
+    - name: Tmux plugins
+      become: false
+      ansible.builtin.git:
+        repo: git@github.com:tmux-plugins/tpm
+        dest: ~/.config/tmux-plugins/tpm
+
     - name: Tmux configuration
       become: false
       ansible.builtin.git:
         repo: git@github.com:worming004/tmux-conf.git
         dest: ~/.config/tmux
-
