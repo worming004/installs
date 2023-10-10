@@ -156,3 +156,7 @@ fi
 if [ $commands[neovide] ]; then
   alias neovide='neovide --multigrid'
 fi
+
+if [ $commands[operator-sdk] ]; then
+  source <(operator-sdk completion zsh)
+fi
