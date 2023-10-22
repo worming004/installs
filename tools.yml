@@ -83,6 +83,7 @@
           - bat
           - podman
           - most
+          - maim
         state: present
     
     - name: Neovim installation
