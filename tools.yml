@@ -55,6 +55,8 @@
           - gpg
           - curl
           - redis-server
+          - maim
+          - fd-find
         state: present
 
     - name: General dependencies Manjaro
@@ -70,6 +72,8 @@
           - picom
           - ripgrep
           - postgresql
+          - maim
+          - fd-find 
         state: present
 
     - name: Nice tools
@@ -83,7 +87,6 @@
           - bat
           - podman
           - most
-          - maim
         state: present
     
     - name: Neovim installation
@@ -93,7 +96,6 @@
         name:
           - neovim
           - ripgrep
-          - fd-find # TODO: move fd-find out for macos
         state: present
 
     - name: Tmux installation
@@ -105,7 +107,8 @@
 
         # TODO: install dotnet for macos
     - name: Dotnet installation
-      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      become: 
+      when: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:
         name:
           - dotnet-sdk-7.0
