@@ -74,6 +74,8 @@ plugins=(alias-finder ansible asdf dnf docker dotnet elixir emoji git gitignore 
 
 source $ZSH/oh-my-zsh.sh
 
+alias goo='web_search google'
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
