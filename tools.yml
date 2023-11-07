@@ -73,7 +73,6 @@
           - ripgrep
           - postgresql
           - maim
-          - fd-find 
         state: present
 
     - name: Nice tools
@@ -133,6 +132,12 @@
       ansible.builtin.git:
         repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
         dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+    - name: Zsh elixir
+      become: false
+      ansible.builtin.git:
+        repo: https://github.com/worming004/elixir-oh-my-zsh
+        dest: ~/.oh-my-zsh/custom/plugins/elixir
 
     - name: Zsh terraform
       become: false
