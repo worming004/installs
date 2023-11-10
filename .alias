@@ -9,12 +9,6 @@ alias editzshrc='nvim ~/.zshrc'
 alias alg='alias | grep'
 alias tma='tmux attach'
 
-alias dte='dotnet test'
-alias dre='dotnet restore'
-alias dru='dotnet run'
-alias dbu='dotnet build'
-alias dbunr='dotnet build --no-restore'
-
 alias tmns='tmux new-session -d -s'
 
 alias grget='git remote get-url origin'
@@ -36,6 +30,8 @@ alias dnap='dotnet add package'
 alias dnp='dotnet pack'
 alias dnng='dotnet nuget'
 alias dnb='dotnet build'
+alias dnre='dotnet restore'
+alias dnrnr='dotnet build --no-restore'
 
 if [ $commands[neovide] ]; then
   alias neovide='neovide --multigrid'
