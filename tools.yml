@@ -152,6 +152,13 @@
         dest: ~/.zshrc.common
         mode: '0644'
 
+    - name: Alias file
+      become: false
+      ansible.builtin.copy:
+        src: ./.alias
+        dest: ~/.alias
+        mode: '0644'
+
     - name: Source common zsh config
       become: false
       ansible.builtin.lineinfile:

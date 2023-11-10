@@ -1,0 +1,41 @@
+alias nv='nvim'
+alias lz='lazygit'
+alias k='kubectl'
+alias min='minikube'
+alias tm='tmux'
+alias pm='podman'
+alias kit-cat='kitten +kitten icat'
+alias editzshrc='nvim ~/.zshrc'
+alias alg='alias | grep'
+alias tma='tmux attach'
+
+alias dte='dotnet test'
+alias dre='dotnet restore'
+alias dru='dotnet run'
+alias dbu='dotnet build'
+alias dbunr='dotnet build --no-restore'
+
+alias tmns='tmux new-session -d -s'
+
+alias grget='git remote get-url origin'
+alias cob='cobra-cli'
+alias tf='terraform'
+alias ist='istioctl'
+
+alias goo='web_search google'
+
+alias dnn='dotnet new'
+alias dnr='dotnet run'
+alias dnt='dotnet test'
+alias dnw='dotnet watch'
+alias dnwr='dotnet watch run'
+alias dnwt='dotnet watch test'
+alias dns='dotnet sln'
+alias dna='dotnet add'
+alias dnp='dotnet pack'
+alias dnng='dotnet nuget'
+alias dnb='dotnet build'
+
+if [ $commands[neovide] ]; then
+  alias neovide='neovide --multigrid'
+fi
