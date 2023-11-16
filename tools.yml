@@ -110,9 +110,18 @@
       when: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:
         name:
-          - dotnet-sdk-7.0
+          - dotnet-sdk-8.0
           - dotnet-sdk-6.0
         state: present
+
+    # Wait a little bit before removing dotnet 7
+    # - name: Dotnet Cleanup
+    #   become: 
+    #   when: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+    #   ansible.builtin.package:
+    #     name:
+    #       - dotnet-sdk-7.0
+    #     state: absent
 
     - name: Asdf installation
       become: false
