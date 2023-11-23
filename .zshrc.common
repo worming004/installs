@@ -60,3 +60,7 @@ fi
 if [ $commands[operator-sdk] ]; then
   source <(operator-sdk completion zsh)
 fi
+
+function nginx_here() {
+  podman run -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro -d --name nginx-here nginx
+}
