@@ -40,3 +40,5 @@ alias dnrnr='dotnet build --no-restore'
 if [ $commands[neovide] ]; then
   alias neovide='neovide --multigrid'
 fi
+
+alias kruncurl='k run -i --tty --rm debug --image curlimages/curl --restart=Never -- sh'
