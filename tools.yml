@@ -106,12 +106,14 @@
 
         # TODO: install dotnet for macos
     - name: Dotnet installation
-      become: 
-      when: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      become: true
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Archlinux"
       ansible.builtin.package:
         name:
           - dotnet-sdk-8.0
+          - dotnet-runtime-8.0
           - dotnet-sdk-6.0
+          - dotnet-runtime-6.0
         state: present
 
     # Wait a little bit before removing dotnet 7
