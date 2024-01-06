@@ -68,12 +68,18 @@
           - unzip
           - inotify-tools
           - zig
-          - pinta
           - picom
           - ripgrep
           - postgresql
           - maim
         state: present
+
+    - name: Obsolete dependencies Manjaro
+      when: ansible_distribution == "Archlinux"
+      ansible.builtin.package:
+        name:
+          - pinta
+        state: absent
 
     - name: Nice tools
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
@@ -107,7 +113,7 @@
         # TODO: install dotnet for macos
     - name: Dotnet installation
       become: true
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' or ansible_distribution == "Archlinux"
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' 
       ansible.builtin.package:
         name:
           - dotnet-sdk-8.0
