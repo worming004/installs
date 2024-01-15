@@ -9,6 +9,7 @@ source $HOME/.alias
 
 
 PATH=$PATH:$(go env GOPATH)/bin/
+PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin/
 PATH=$PATH:$HOME/bin/
 PATH=$PATH:$HOME/.dotnet/tools/
