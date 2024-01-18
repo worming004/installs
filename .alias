@@ -15,6 +15,11 @@ alias tma='tmux attach'
 
 alias tmns='tmux new-session -d -s'
 
+function tmnsr() {
+  tmux new-session -d -s $1
+  tmux switch-client -t $1
+}
+
 alias grget='git remote get-url origin'
 alias cob='cobra-cli'
 alias tf='terraform'
@@ -37,7 +42,8 @@ alias dnb='dotnet build'
 alias dnre='dotnet restore'
 alias dnrnr='dotnet build --no-restore'
 
-if [ $commands[neovide] ]; then
+if [ $commands[neovide] ];
+then
   alias neovide='neovide --multigrid'
 fi
 
