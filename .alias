@@ -48,3 +48,24 @@ then
 fi
 
 alias kruncurl='k run -i --tty --rm debug --image curlimages/curl --restart=Never -- sh'
+
+# istio crds
+alias kggw='kubectl get gateway'
+alias kdgw='kubectl describe gateway'
+alias kdelgw='kubectl delete gateway'
+alias kegw='kubectl edit gateway'
+
+alias kgve='kubectl get virtualservice'
+alias kdve='kubectl describe virtualservice'
+alias kdelve='kubectl delete virtualservice'
+alias keve='kubectl edit virtualservice'
+
+alias kgap='kubectl get authorizationpolicy'
+alias kdap='kubectl describe authorizationpolicy'
+alias kdelap='kubectl delete authorizationpolicy'
+alias keap='kubectl edit authorizationpolicy'
+
+alias kgse='kubectl get serviceentry'
+alias kdse='kubectl describe serviceentry'
+alias kdelse='kubectl delete serviceentry'
+alias kese='kubectl edit serviceentry'
