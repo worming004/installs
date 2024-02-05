@@ -68,6 +68,7 @@
           - unzip
           - inotify-tools
           - zig
+          - fd
           - picom
           - ripgrep
           - postgresql

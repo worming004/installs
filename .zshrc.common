@@ -12,6 +12,7 @@ PATH=$PATH:$(go env GOPATH)/bin/
 PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin/
 PATH=$PATH:$HOME/bin/
+PATH=$PATH:/var/lib/snapd/snap/bin
 PATH=$PATH:$HOME/.dotnet/tools/
 
 # tmux
