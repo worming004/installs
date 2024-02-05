@@ -42,40 +42,42 @@
       become: true
       ansible.builtin.package:
         name:
-          - autoconf
-          - automake
-          - build-essential
-          - libssl-dev
-          - libncurses5-dev
-          - unzip
-          - python3-pip
-          - inotify-tools
-          - postgresql
-          - postgresql-contrib
-          - gpg
-          - curl
-          - redis-server
-          - maim
-          - fd-find
+        - autoconf
+        - automake
+        - build-essential
+        - libssl-dev
+        - libncurses5-dev
+        - unzip
+        - python3-pip
+        - inotify-tools
+        - postgresql
+        - postgresql-contrib
+        - gpg
+        - curl
+        - redis-server
+        - maim
+        - fd-find
         state: present
 
-    - name: General dependencies Manjaro
+    - name: General dependencies Arch
       when: ansible_distribution == "Archlinux"
       ansible.builtin.package:
         name:
-          - autoconf
-          - automake
-          - unzip
-          - inotify-tools
-          - zig
-          - fd
-          - picom
-          - ripgrep
-          - postgresql
-          - maim
+        - autoconf
+        - automake
+        - unzip
+        - inotify-tools
+        - zig
+        - fd
+        - picom
+        - ripgrep
+        - postgresql
+        - maim
+        - dotnet-runtime
+        - dotnet-sdk
         state: present
 
-    - name: Obsolete dependencies Manjaro
+    - name: Obsolete dependencies Arch
       when: ansible_distribution == "Archlinux"
       ansible.builtin.package:
         name:
