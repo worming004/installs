@@ -194,3 +194,9 @@
       ansible.builtin.git:
         repo: git@github.com:worming004/tmux-conf.git
         dest: ~/.config/tmux
+
+    - name: Kitty configuration
+      become: false
+      ansible.builtin.git:
+        repo: git@github.com:worming004/kitty.git
+        dest: ~/.config/kitty
