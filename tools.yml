@@ -48,6 +48,7 @@
         - kitty
         - ninja
         - noto-fonts-emoji
+        - skaffold
         - ttf-nerd-fonts-symbols
         - ttf-cascadia-code-nerd
         - unzip
