@@ -67,6 +67,10 @@ if [ $commands[opa] ]; then
   source <(opa completion zsh)
 fi
 
+if [ $commands[glow] ]; then
+  source <(glow completion zsh)
+fi
+
 function nginx_here() {
   podman run -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro -d --name nginx-here nginx
 }
