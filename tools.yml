@@ -75,6 +75,7 @@
         - maim
         - dotnet-runtime
         - dotnet-sdk
+        - waybar
         state: present
 
     - name: Obsolete dependencies Arch
@@ -202,3 +203,9 @@
       ansible.builtin.git:
         repo: git@github.com:worming004/kitty.git
         dest: ~/.config/kitty
+
+    - name: Waybar configuration
+      become: false
+      ansible.builtin.git:
+        repo: git@github.com:worming004/waybar.git
+        dest: ~/.config/waybar
