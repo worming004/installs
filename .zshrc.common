@@ -46,34 +46,25 @@ _dotnet_zsh_complete()
 
 compdef _dotnet_zsh_complete dotnet
 
-if [ $commands[skaffold] ]; then
-  source <(skaffold completion zsh)
-  compdef _skaffold skaffold
-fi
-
 # Ensure glob expression works like bash
 setopt extended_glob
 
-if [ $commands[podman] ]; then
-  source <(podman completion zsh)
-fi
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
 
+register_zsh_completion_cobra_style() {
+  local tool="$1"
+  if command_exists "$tool"; then
+      source <("$tool" completion zsh)
+  fi
+}
 
-if [ $commands[operator-sdk] ]; then
-  source <(operator-sdk completion zsh)
-fi
+cobra_tools=("podman", "operator-sdk", "skaffold", "opa", "glow", "kubebuilder")
 
-if [ $commands[opa] ]; then
-  source <(opa completion zsh)
-fi
-
-if [ $commands[glow] ]; then
-  source <(glow completion zsh)
-fi
-
-if [ $commands[kubebuilder] ]; then
-  source <(kubebuilder completion zsh)
-fi
+for tool in "${cobra_tools[@]}"; do
+  register_zsh_completion_cobra_style "$tool"
+done
 
 function nginx_here() {
   podman run -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro -d --name nginx-here nginx
