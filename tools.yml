@@ -2,40 +2,6 @@
   become: true
   name: Tools
   tasks:
-    - name: General dependencies Fedora (legacy)
-      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      when: ansible_distribution == "Fedora"
-      ansible.builtin.package:
-        name:
-          - openssl-devel
-          - readline-devel
-          - zlib-devel
-          - libcurl-devel
-          - uuid-devel
-          - libuuid-devel
-          - autoconf
-          - automake
-          - ncurses-devel
-          - gcc-c++
-          - libyaml-devel
-          - zig
-          - picom
-          - postgresql
-          - postgresql-contrib
-        state: present
-
-    # - name: Ubuntu add redis repository
-    #   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-    #   block:
-    #     - name: Add redis gpg
-    #       ansible.builtin.get_url:
-    #         url: https://packages.redis.io/gpg
-    #         dest: /usr/share/keyrings/redis-archive-keyring.gpg
-    #
-    #     - name: Add redis source
-    #       ansible.builtin.apt_repository:
-    #         repo: "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb jammy stable"
-    #         state: present
 
     - name: General dependencies Ubuntu
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -65,17 +31,30 @@
         name:
         - autoconf
         - automake
-        - unzip
-        - inotify-tools
-        - zig
-        - fd
-        - picom
-        - ripgrep
-        - postgresql
-        - maim
+        - code
+        - docker
         - dotnet-runtime
         - dotnet-sdk
+        - fd
+        - inotify-tools
+        - jq
+        - maim
+        - mercurial
+        - meson
+        - neofetch
+        - picom
+        - postgresql
+        - ripgrep
+        - kitty
+        - ninja
+        - noto-fonts-emoji
+        - ttf-nerd-fonts-symbols
+        - ttf-cascadia-code-nerd
+        - unzip
         - waybar
+        - wl-clipboard
+        - wofi
+        - zig
         state: present
 
     - name: Obsolete dependencies Arch
@@ -126,21 +105,12 @@
           - dotnet-runtime-6.0
         state: present
 
-    # Wait a little bit before removing dotnet 7
-    # - name: Dotnet Cleanup
-    #   become: 
-    #   when: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-    #   ansible.builtin.package:
-    #     name:
-    #       - dotnet-sdk-7.0
-    #     state: absent
-
     - name: Asdf installation
       become: false
       ansible.builtin.git:
         repo: https://github.com/asdf-vm/asdf.git
         dest: ~/.asdf
-        version: v0.11.3
+        version: v0.14.0
 
     - name: Zsh auto suggestion
       become: false
