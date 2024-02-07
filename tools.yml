@@ -38,6 +38,7 @@
         - fd
         - foot
         - fuse2
+        - gnu-netcat
         - inotify-tools
         - jq
         - kitty
@@ -56,6 +57,7 @@
         - ttf-cascadia-code-nerd
         - unzip
         - waybar
+        - wget
         - wl-clipboard
         - wofi
         - zig
