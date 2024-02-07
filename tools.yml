@@ -36,8 +36,11 @@
         - dotnet-runtime
         - dotnet-sdk
         - fd
+        - foot
+        - fuse2
         - inotify-tools
         - jq
+        - kitty
         - maim
         - mercurial
         - meson
@@ -45,10 +48,10 @@
         - picom
         - postgresql
         - ripgrep
-        - kitty
         - ninja
         - noto-fonts-emoji
         - skaffold
+        - thunar
         - ttf-nerd-fonts-symbols
         - ttf-cascadia-code-nerd
         - unzip
