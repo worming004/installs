@@ -43,9 +43,6 @@
         - jq
         - kitty
         - maim
-        - mercurial
-        - meson
-        - neofetch
         - picom
         - postgresql
         - ripgrep
@@ -74,13 +71,15 @@
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:
         name:
-          - neofetch
-          - thefuck
-          - ranger
-          - zsh
-          - bat
-          - podman
-          - most
+        - neofetch
+        - thefuck
+        - ranger
+        - zsh
+        - bat
+        - podman
+        - most
+        - mercurial
+        - meson
         state: present
     
     - name: Neovim installation
