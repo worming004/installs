@@ -45,6 +45,7 @@
         - maim
         - picom
         - postgresql
+        - pulseaudio
         - ripgrep
         - ninja
         - noto-fonts-emoji
