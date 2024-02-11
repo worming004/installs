@@ -66,6 +66,10 @@ for tool in "${cobra_tools[@]}"; do
   register_zsh_completion_cobra_style "$tool"
 done
 
+if command_exists "gh"; then
+  eval "$(gh completion -s zsh)"
+fi
+
 function nginx_here() {
   podman run -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro -d --name nginx-here nginx
 }
