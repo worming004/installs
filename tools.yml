@@ -23,6 +23,7 @@
         - redis-server
         - maim
         - fd-find
+        - libyaml-dev
         state: present
 
     - name: General dependencies Arch
