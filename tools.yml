@@ -50,6 +50,7 @@
         - ripgrep
         - ninja
         - noto-fonts-emoji
+        - restic
         - skaffold
         - thunar
         - ttf-nerd-fonts-symbols
