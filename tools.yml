@@ -60,6 +60,7 @@
         - wget
         - wl-clipboard
         - wofi
+        - xorg-xwayland
         state: present
 
     - name: Obsolete dependencies Arch
