@@ -60,7 +60,6 @@
         - wget
         - wl-clipboard
         - wofi
-        - zig
         state: present
 
     - name: Obsolete dependencies Arch
