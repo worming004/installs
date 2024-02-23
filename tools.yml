@@ -146,6 +146,13 @@
         dest: ~/.zshrc.common
         mode: '0644'
 
+    - name: dlDockerFile
+      become: false
+      ansible.builtin.copy:
+        src: ./.dldockerfile
+        dest: ~/.dldockerfile
+        mode: '0644'
+
     - name: Alias file
       become: false
       ansible.builtin.copy:

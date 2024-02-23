@@ -1,0 +1,6 @@
+function dldockerfile () {
+  language=$1
+
+  wget -O Dockerfile "https://raw.githubusercontent.com/worming004/docker-collection/master/dockerfiles/$language/Dockerfile"
+}
+

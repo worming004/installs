@@ -75,3 +75,5 @@ function nginx_here() {
 }
 
 export KUBE_EDITOR="nvim"
+
+source ~/.dldockerfile
