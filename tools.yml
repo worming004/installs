@@ -43,7 +43,9 @@
         - gnu-netcat
         - inotify-tools
         - jq
+        - keepassxc
         - kitty
+        - languagetool
         - maim
         - picom
         - postgresql
