@@ -1,5 +1,4 @@
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="essembeh"
 
 plugins=(alias-finder ansible archlinux argocd asdf docker docker-compose dotnet emoji git gitignore golang helm istioctl kubectl minikube oc ssh-agent systemd terraform thefuck tmux wd web-search zsh-autosuggestions zsh-syntax-highlighting)
@@ -77,3 +76,16 @@ function nginx_here() {
 export KUBE_EDITOR="nvim"
 
 source ~/.dldockerfile
+
+function start_sql_server {
+  if [ -z $CONTAINER_ENGINE ]
+  then
+    CONTAINER_ENGINE=docker
+  fi
+
+  $CONTAINER_ENGINE container inspect sqlserver
+  if [ $? -eq 0 ]
+  then
+    $CONTAINER_ENGINE run -m 2g --cpus=2 -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(*)Password" -p 1433:1433 -d --name sqlserver mcr.microsoft.com/mssql/server:2022-latest
+  fi
+}
