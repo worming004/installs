@@ -5,6 +5,7 @@ plugins=(alias-finder ansible archlinux argocd asdf docker docker-compose dotnet
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.alias
+source $HOME/.functions.sh
 
 
 PATH=$PATH:$(go env GOPATH)/bin/
@@ -13,6 +14,7 @@ PATH=$PATH:$HOME/.local/bin/
 PATH=$PATH:$HOME/bin/
 PATH=$PATH:/var/lib/snapd/snap/bin
 PATH=$PATH:$HOME/.dotnet/tools/
+PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 
 # tmux
 SHELL=$(which zsh)

@@ -162,6 +162,13 @@
         dest: ~/.alias
         mode: '0644'
 
+    - name: Functions file
+      become: false
+      ansible.builtin.copy:
+        src: ./.functions.sh
+        dest: ~/.functions.sh
+        mode: '0644'
+
     - name: Source common zsh config
       become: false
       ansible.builtin.lineinfile:
