@@ -199,6 +199,12 @@
         repo: git@github.com:worming004/kitty.git
         dest: ~/.config/kitty
 
+    - name: Sway configuration
+      become: false
+      ansible.builtin.git:
+        repo: git@github.com:worming004/i3-config.git
+        dest: ~/.config/sway
+
     - name: Waybar configuration
       become: false
       ansible.builtin.git:
