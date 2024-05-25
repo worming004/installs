@@ -1,0 +1,52 @@
+- hosts: localhost
+  become: true
+  name: Tools
+  vars:
+    user_home: "{{ lookup('env', 'HOME') }}"
+  tasks:
+    - name: Check if Neovim is installed and get version
+      command: nvim --version
+      register: neovim_version
+      ignore_errors: yes
+    - name: Set fact if Neovim is installed and at the desired version
+      set_fact:
+        neovim_installed: "{{ neovim_version.stdout is defined and 'NVIM v0.10.0' in neovim_version.stdout }}"
+
+    - name: Debug Neovim version
+      debug:
+        msg: "Neovim is installed and at the correct version."
+      when: neovim_installed
+
+    - name: Neovim dependencies install for MacOSX
+      when: ansible_distribution == "MacOSX" and not neovim_installed
+      become: false
+      ansible.builtin.package:
+        name:
+        - ninja
+        - cmake
+        - gettext
+        - curl
+        state: present
+    - name: neovim clone 
+      become: false
+      ansible.builtin.git:
+        repo: https://github.com/neovim/neovim.git
+        dest: ~/git/neovim/neovim
+        version: v0.10.0
+        force: true
+      when: not neovim_installed
+    - name: neovim build
+      become: false
+      ansible.builtin.command:
+        chdir: "{{ user_home }}/git/neovim/neovim"
+        cmd: |
+          make CMAKE_BUILD_TYPE=Release
+      when: not neovim_installed
+    - name: neovim install
+      become: true
+      ansible.builtin.command:
+        chdir: "{{ user_home }}/git/neovim/neovim"
+        cmd: |
+          make install
+      when: not neovim_installed
+
