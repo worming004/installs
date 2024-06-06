@@ -90,15 +90,6 @@
         - meson
         state: present
     
-    - name: Neovim installation
-      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
-      when: ansible_distribution != "Archlinux"
-      ansible.builtin.package:
-        name:
-          - neovim
-          - ripgrep
-        state: present
-
     - name: Tmux installation
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:

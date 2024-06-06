@@ -12,10 +12,25 @@
       set_fact:
         neovim_installed: "{{ neovim_version.stdout is defined and 'NVIM v0.10.0' in neovim_version.stdout }}"
 
+    - name: Neovim common dependencies install
+      become: false
+      ansible.builtin.package:
+        name:
+        - ripgrep
+        state: present
+
     - name: Debug Neovim version
       debug:
-        msg: "Neovim is installed and at the correct version."
+        msg: "Neovim is installed and at the expected version. Skipping"
       when: neovim_installed
+
+    - name: Neovim uninstall neovim installed with package manager
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
+      when: not neovim_installed
+      ansible.builtin.package:
+        name:
+          - neovim
+        state: absent
 
     - name: Neovim dependencies install for MacOSX
       when: ansible_distribution == "MacOSX" and not neovim_installed
