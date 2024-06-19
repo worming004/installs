@@ -10,7 +10,9 @@
       ignore_errors: yes
     - name: Set fact if Neovim is installed and at the desired version
       set_fact:
-        neovim_installed: "{{ neovim_version.stdout is defined and 'NVIM v0.10.0' in neovim_version.stdout }}"
+        neovim_installed: "{{ neovim_version.stdout is defined and 'NVIM v0.10.0' in neovim_version.stdout and '-dev-' not in neovim_version.stdout }}"
+    # print value of neovim_installed
+    - debug: var=neovim_installed
 
     - name: Neovim common dependencies install
       become: false
@@ -30,6 +32,7 @@
       ansible.builtin.package:
         name:
           - neovim
+          - neovim-nightly-bin-debug
         state: absent
 
     - name: Neovim dependencies install for MacOSX
@@ -42,6 +45,7 @@
         - gettext
         - curl
         state: present
+        
     - name: neovim clone 
       become: false
       ansible.builtin.git:
@@ -50,6 +54,13 @@
         version: v0.10.0
         force: true
       when: not neovim_installed
+
+    - name: remove neovim build directory
+      become: false
+      ansible.builtin.file:
+        path:  ~/git/neovim/neovim/build
+        state: absent
+
     - name: neovim build
       become: false
       ansible.builtin.command:
@@ -57,6 +68,7 @@
         cmd: |
           make CMAKE_BUILD_TYPE=Release
       when: not neovim_installed
+      
     - name: neovim install
       become: true
       ansible.builtin.command:
