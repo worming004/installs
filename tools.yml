@@ -15,6 +15,7 @@
         - libncurses5-dev
         - libsqlite3-dev
         - libbz2-dev
+        - libedit-dev
         - unzip
         - python3-pip
         - inotify-tools
