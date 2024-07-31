@@ -27,6 +27,7 @@
         - maim
         - fd-find
         - libyaml-dev
+        - buildah
         state: present
 
     - name: General dependencies Arch
@@ -35,6 +36,7 @@
         name:
         - autoconf
         - automake
+        - buildah
         - code
         - docker
         - docker-compose
