@@ -145,3 +145,5 @@ alias mx='mix xref'
 alias mf='mix format'
 
 alias b='buildah'
+
+alias :q='exit'
