@@ -24,6 +24,7 @@
         - gpg
         - curl
         - redis-server
+        - socat
         - maim
         - fd-find
         - libyaml-dev
