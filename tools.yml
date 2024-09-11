@@ -93,6 +93,7 @@
         - mercurial
         - meson
         - jq
+        - watch
         state: present
     
     - name: Tmux installation
