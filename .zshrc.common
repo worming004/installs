@@ -7,6 +7,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.alias
 source $HOME/.functions.sh
 
+ENCORE_PATH=$PATH:/home/worming/.encore
 
 PATH=$PATH:$(go env GOPATH)/bin/
 PATH=$PATH:$HOME/.cargo/bin
@@ -15,6 +16,7 @@ PATH=$PATH:$HOME/bin/
 PATH=$PATH:/var/lib/snapd/snap/bin
 PATH=$PATH:$HOME/.dotnet/tools/
 PATH=$PATH:$HOME/.local/share/nvim/mason/bin
+PATH=$PATH:$ENCORE_PATH/bin
 
 # tmux
 SHELL=$(which zsh)
@@ -61,7 +63,7 @@ register_zsh_completion_cobra_style() {
   fi
 }
 
-cobra_tools=("podman", "operator-sdk", "skaffold", "opa", "glow", "kubebuilder", "ko", "dapr", "argocd", "kn", "kn-quickstart", "kube-linter")
+cobra_tools=("podman", "operator-sdk", "skaffold", "opa", "glow", "kubebuilder", "ko", "dapr", "argocd", "kn", "kn-quickstart", "kube-linter", "encore")
 
 for tool in "${cobra_tools[@]}"; do
   register_zsh_completion_cobra_style "$tool"
