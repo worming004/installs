@@ -63,7 +63,7 @@ register_zsh_completion_cobra_style() {
   fi
 }
 
-cobra_tools=("podman", "operator-sdk", "skaffold", "opa", "glow", "kubebuilder", "ko", "dapr", "argocd", "kn", "kn-quickstart", "kube-linter", "encore")
+cobra_tools=("podman", "operator-sdk", "skaffold", "opa", "glow", "kubebuilder", "ko", "dapr", "argocd", "kn", "kn-quickstart", "kube-linter", "encore", "go-blueprint")
 
 for tool in "${cobra_tools[@]}"; do
   register_zsh_completion_cobra_style "$tool"
