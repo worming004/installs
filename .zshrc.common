@@ -18,6 +18,9 @@ PATH=$PATH:$HOME/.dotnet/tools/
 PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 PATH=$PATH:$ENCORE_PATH/bin
 
+# Iex
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # tmux
 SHELL=$(which zsh)
 
