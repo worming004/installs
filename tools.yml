@@ -38,6 +38,8 @@
         - autoconf
         - automake
         - buildah
+        - bluez
+        - bluez-utils
         - code
         - docker
         - docker-compose
@@ -46,6 +48,8 @@
         - fd
         - foot
         - fuse2
+        - greetd
+        - greetd-tuigreet
         - gnu-netcat
         - inotify-tools
         - jq
@@ -53,14 +57,16 @@
         - kitty
         - languagetool
         - maim
+        - man
+        - os-prober
         - picom
         - postgresql
-        - pulseaudio
         - ripgrep
         - ninja
         - noto-fonts-emoji
         - restic
         - skaffold
+        - openssh
         - thunar
         - ttf-nerd-fonts-symbols
         - ttf-cascadia-code-nerd
@@ -93,7 +99,6 @@
         - mercurial
         - meson
         - jq
-        - watch
         state: present
     
     - name: Tmux installation
