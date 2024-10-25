@@ -17,6 +17,7 @@ PATH=$PATH:/var/lib/snapd/snap/bin
 PATH=$PATH:$HOME/.dotnet/tools/
 PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 PATH=$PATH:$ENCORE_PATH/bin
+PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
 # Iex
 export ERL_AFLAGS="-kernel shell_history enabled"
