@@ -52,6 +52,7 @@
         - greetd
         - greetd-tuigreet
         - gnu-netcat
+        - hugo
         - inotify-tools
         - jq
         - keepassxc
