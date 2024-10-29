@@ -58,11 +58,12 @@
         - languagetool
         - maim
         - man
+        - ninja
         - os-prober
         - picom
         - postgresql
         - ripgrep
-        - ninja
+        - spotify-launcher
         - noto-fonts-emoji
         - restic
         - skaffold
@@ -203,11 +204,11 @@
         repo: git@github.com:worming004/kitty.git
         dest: ~/.config/kitty
 
-    - name: Sway configuration
+    - name: Hyprland configuration
       become: false
       ansible.builtin.git:
-        repo: git@github.com:worming004/i3-config.git
-        dest: ~/.config/sway
+        repo: git@github.com:worming004/hyprland.git
+        dest: ~/.config/hypr/
 
     - name: Waybar configuration
       become: false
