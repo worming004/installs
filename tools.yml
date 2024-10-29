@@ -48,6 +48,7 @@
         - fd
         - foot
         - fuse2
+        - github-cli
         - greetd
         - greetd-tuigreet
         - gnu-netcat
