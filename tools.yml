@@ -52,6 +52,8 @@
         - greetd
         - greetd-tuigreet
         - gnu-netcat
+        - hyprland
+        - hyprlock
         - hugo
         - inotify-tools
         - jq
