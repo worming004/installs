@@ -43,8 +43,6 @@
         - code
         - docker
         - docker-compose
-        - dotnet-runtime
-        - dotnet-sdk
         - fd
         - foot
         - fuse2
