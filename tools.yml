@@ -66,6 +66,8 @@
         - postgresql
         - ripgrep
         - spotify-launcher
+        - tcl
+        - tk
         - noto-fonts-emoji
         - restic
         - skaffold
