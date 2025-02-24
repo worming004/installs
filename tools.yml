@@ -28,6 +28,7 @@
         - fd-find
         - libyaml-dev
         - buildah
+        - pdftk
         state: present
 
     - name: General dependencies Arch
