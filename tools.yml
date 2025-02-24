@@ -2,7 +2,6 @@
   become: true
   name: Tools
   tasks:
-
     - name: General dependencies Ubuntu
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
       become: true
@@ -222,3 +221,9 @@
       ansible.builtin.git:
         repo: git@github.com:worming004/waybar.git
         dest: ~/.config/waybar
+
+    - name: Ensure ~/.local/bin dir exists
+      become: false
+      ansible.builtin.file:
+        path: ~/.local/bin
+        state: directory

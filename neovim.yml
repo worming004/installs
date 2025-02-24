@@ -15,10 +15,12 @@
     - debug: var=neovim_installed
 
     - name: Neovim common dependencies install
-      become: false
+      become: true
       ansible.builtin.package:
         name:
         - ripgrep
+        - cmake
+        - gettext
         state: present
 
     - name: Debug Neovim version
@@ -37,7 +39,7 @@
 
     - name: Neovim dependencies install for MacOSX
       when: ansible_distribution == "MacOSX" and not neovim_installed
-      become: false
+      become: true
       ansible.builtin.package:
         name:
         - ninja
