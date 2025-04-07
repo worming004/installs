@@ -147,3 +147,7 @@ alias mf='mix format'
 alias b='buildah'
 
 alias :q='exit'
+
+function cdfd() {
+  cd "$(fd $1 | head)"
+}
