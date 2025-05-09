@@ -85,7 +85,7 @@ if command_exists "gh"; then
 fi
 
 function nginx_here() {
-  podman run -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro -d --name nginx-here nginx
+  podman run -p 8080:80 -v $(pwd):/usr/share/nginx/html:ro -d --name nginx-here docker.io/nginx:latest
 }
 
 export KUBE_EDITOR="nvim"
