@@ -64,6 +64,7 @@
         - ninja
         - os-prober
         - picom
+        - pipewire
         - postgresql
         - ripgrep
         - slurp
@@ -80,6 +81,7 @@
         - unzip
         - waybar
         - wget
+        - wireplumber
         - wl-clipboard
         - wofi
         - xorg-xwayland
