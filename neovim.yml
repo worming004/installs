@@ -10,7 +10,7 @@
       ignore_errors: yes
     - name: Set fact if Neovim is installed and at the desired version
       set_fact:
-        neovim_installed: "{{ neovim_version.stdout is defined and 'NVIM v0.11.0' in neovim_version.stdout and '-dev-' not in neovim_version.stdout }}"
+        neovim_installed: "{{ neovim_version.stdout is defined and 'NVIM v0.11.2' in neovim_version.stdout and '-dev-' not in neovim_version.stdout }}"
     # print value of neovim_installed
     - debug: var=neovim_installed
 
@@ -53,7 +53,7 @@
       ansible.builtin.git:
         repo: https://github.com/neovim/neovim.git
         dest: ~/git/neovim/neovim
-        version: v0.11.0
+        version: v0.11.2
         force: true
       when: not neovim_installed
 
