@@ -18,10 +18,13 @@ PATH=$PATH:$HOME/.cargo/bin
 PATH=$PATH:$HOME/.local/bin/
 PATH=$PATH:$HOME/bin/
 PATH=$PATH:/var/lib/snapd/snap/bin
-PATH=$PATH:$HOME/.dotnet/tools/
 PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 PATH=$PATH:$ENCORE_PATH/bin
 PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
+
+#dotnet
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$HOME/.dotnet:$HOME/.dotnet/tools:$PATH
 
 # asdf 
 export ASDF_DATA_DIR="/home/$USER/.asdf"
