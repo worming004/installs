@@ -10,17 +10,19 @@ source $HOME/.functions.sh
 PYTHON_VENV_NAME=".venv"
 PYTHON_VENV_NAMES=($PYTHON_VENV_NAME venv)
 
-ENCORE_PATH=$PATH:/home/worming/.encore
+export ENCORE_PATH=$PATH:/home/worming/.encore
 
-PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:$(go env GOPATH)/bin/
-PATH=$PATH:$HOME/.cargo/bin
-PATH=$PATH:$HOME/.local/bin/
-PATH=$PATH:$HOME/bin/
-PATH=$PATH:/var/lib/snapd/snap/bin
-PATH=$PATH:$HOME/.local/share/nvim/mason/bin
-PATH=$PATH:$ENCORE_PATH/bin
-PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin/
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin/
+export PATH=$PATH:$HOME/bin/
+export PATH=$PATH:/var/lib/snapd/snap/bin
+export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
+export PATH=$PATH:$ENCORE_PATH/bin
+export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
+export PATH="$(asdf where nodejs)/.npm/bin:$PATH"
+
 
 #dotnet
 export DOTNET_ROOT=$HOME/.dotnet

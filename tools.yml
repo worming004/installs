@@ -124,8 +124,6 @@
       ignore_errors: true
       ansible.builtin.package:
         name:
-          - dotnet-skd-10.0
-          - dotnet-runtime-10.0
           - dotnet-sdk-8.0
           - dotnet-runtime-8.0
           - dotnet-sdk-6.0
