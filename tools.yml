@@ -117,19 +117,6 @@
           - tmux
         state: present
 
-        # TODO: install dotnet for macos
-    - name: Dotnet installation
-      become: true
-      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-      ignore_errors: true
-      ansible.builtin.package:
-        name:
-          - dotnet-sdk-8.0
-          - dotnet-runtime-8.0
-          - dotnet-sdk-6.0
-          - dotnet-runtime-6.0
-        state: present
-
     - name: Asdf installation
       become: false
       ansible.builtin.git:
