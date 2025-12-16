@@ -1,5 +1,4 @@
 - hosts: localhost
-  become: true
   name: Tools
   vars:
     user_home: "{{ lookup('env', 'HOME') }}"
@@ -17,12 +16,12 @@
     - debug: var=neovim_installed
 
     - name: Neovim common dependencies install
-      become: true
+      become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:
         name:
-        - ripgrep
-        - cmake
-        - gettext
+          - ripgrep
+          - cmake
+          - gettext
         state: present
 
     - name: Debug Neovim version
@@ -41,16 +40,15 @@
 
     - name: Neovim dependencies install for MacOSX
       when: ansible_distribution == "MacOSX" and not neovim_installed
-      become: true
       ansible.builtin.package:
         name:
-        - ninja
-        - cmake
-        - gettext
-        - curl
+          - ninja
+          - cmake
+          - gettext
+          - curl
         state: present
-        
-    - name: neovim clone 
+
+    - name: neovim clone
       become: false
       ansible.builtin.git:
         repo: https://github.com/neovim/neovim.git
@@ -62,13 +60,13 @@
     - name: remove neovim build directory
       become: false
       ansible.builtin.file:
-        path:  ~/git/neovim/neovim/build
+        path: ~/git/neovim/neovim/build
         state: absent
 
     - name: remove neovim deps directory
       become: false
       ansible.builtin.file:
-        path:  ~/git/neovim/neovim/.deps
+        path: ~/git/neovim/neovim/.deps
         state: absent
 
     - name: neovim build
@@ -78,7 +76,7 @@
         cmd: |
           make CMAKE_BUILD_TYPE=Release
       when: not neovim_installed
-      
+
     - name: neovim install
       become: true
       ansible.builtin.command:
@@ -90,7 +88,7 @@
     - name: Check if Neovim is installed and get version
       command: nvim --version
       register: neovim_version_post_install
-    
+
     - name: print output
       debug:
         msg: "{{ neovim_version_post_install.stdout }}"
