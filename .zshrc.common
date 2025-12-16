@@ -21,7 +21,9 @@ export PATH=$PATH:/var/lib/snapd/snap/bin
 export PATH=$PATH:$HOME/.local/share/nvim/mason/bin
 export PATH=$PATH:$ENCORE_PATH/bin
 export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
-export PATH="$(asdf where nodejs)/.npm/bin:$PATH"
+if [ -x "$(command -v asdf)" ] && [ -x "$(command -v nodejs)" ]; then
+  export PATH="$(asdf where nodejs)/.npm/bin:$PATH"
+fi
 
 
 #dotnet
