@@ -111,3 +111,16 @@ function start_sql_server {
     $CONTAINER_ENGINE run -m 2g --cpus=2 -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(*)Password" -p 1433:1433 -d --name sqlserver mcr.microsoft.com/mssql/server:2022-latest
   fi
 }
+
+function fdcd {
+  local pattern="${1:-}"
+  if [[ -z "$pattern" ]]; then
+    echo "Usage: fdcd <pattern>"
+    return 1
+  fi
+  local dir
+  dir=$(fd --type d -i "$pattern" | fzf --prompt="Select directory: ")
+  if [[ -n "$dir" ]]; then
+    cd "$dir"
+  fi
+}
