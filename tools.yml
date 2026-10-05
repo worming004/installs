@@ -98,7 +98,6 @@
       become: "{{ ansible_facts['distribution'] != 'MacOSX' }}"
       ansible.builtin.package:
         name:
-          - neofetch
           - thefuck
           - ranger
           - zsh
